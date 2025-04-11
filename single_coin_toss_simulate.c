@@ -2,9 +2,8 @@
 #include<stdlib.h> //.......contains the rand() and srand() function
 #include <time.h>  //.......contains the time() function
 
-int toss(int sd)
+int toss( )
 {
-	srand(time(NULL) + sd);
 	int h = (rand()/10) % 2; //.............do the math, random int between 0 and 1
 
 	return h;
@@ -18,15 +17,17 @@ int main()
 	printf("Enter the number of coin toss: ");
 	scanf("%d", &simu);
 
+	srand(time(NULL));
+
 	for(int i=0; i< simu; i++)
 	{
-		coin = toss(i);
+		coin = toss();
 		if (coin == 0)
 		{
 			head++; 
 		}
 
-		printf("coin = %d | head = %d\n", coin, head);
+		//printf("coin = %d | head = %d\n", coin, head);
 	}
 
 	prob = (float) head/simu;
