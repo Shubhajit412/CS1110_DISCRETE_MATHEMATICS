@@ -12,9 +12,8 @@
 #include<time.h>
 #include<math.h>
 
-int move(int iter)
+int move( )
 {
-    srand(time(NULL) + iter);       //.......observe the seed for rand()
     int verdict = (rand() % 4);     //.......generated random integers amongst {0, 1, 2, 3}
 
     return verdict;
@@ -29,11 +28,13 @@ int main()
     printf("Enter the number of throws to be done : ");
     scanf("%d", &simu);
 
+    srand(time(NULL));       //.......observe the seed for rand()
+
     for(int k=0; k < simu; k++)
     {
-        steps = move(k);
+        steps = move();
 
-        if(steps == 0)           //......incorporates the probability in the steps
+        if(steps == 0)             //......incorporates the probability in the steps
             position--;            //......moves backward
         else
             position++;            //......moves forward
