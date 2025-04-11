@@ -11,9 +11,8 @@
 #include<stdlib.h>
 #include<time.h>
 
-int throw(int iter)
+int throw( )
 {
-    srand(time(NULL) + iter);       //.......observe the seed for rand()
     int face = (rand() % 6) + 1;    //.......generated random integers amongst {1,2,3,4,5,6}
 
     return face;
@@ -28,9 +27,11 @@ int main()
     printf("Enter the number of throws to be done : ");
     scanf("%d", &simu);
 
+    srand(time(NULL));       //.......observe the seed for rand()
+
     for(int k=0; k < simu; k++)
     {
-        face = throw(k);
+        face = throw();
 
         if(face % 2 == 0)    //........checks for occurences of Event A
         {
