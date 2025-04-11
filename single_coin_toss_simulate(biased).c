@@ -11,9 +11,8 @@
 #include<stdlib.h>
 #include<time.h>
 
-int toss(int iter)
+int toss( )
 {
-    srand(time(NULL) + iter);       //.......observe the seed for rand()
     int face = (rand() % 3);        //.......generated random integers amongst {0,1,2}
 
     return face;
@@ -28,9 +27,11 @@ int main()
     printf("Enter the number of tosses to be done : ");
     scanf("%d", &simu);
 
+    srand(time(NULL));       //.......observe the seed for rand()
+
     for(int k=0; k < simu; k++)
     {
-        coin = toss(k);
+        coin = toss();
 
         if(coin == 0)
         {
