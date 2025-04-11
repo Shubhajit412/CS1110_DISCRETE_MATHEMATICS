@@ -11,17 +11,15 @@
 #include<stdlib.h>
 #include<time.h>
 
-int throw_one(int iter)
+int throw_one( )
 {
-    srand(time(NULL) + iter);       //.......observe the seed for rand()
     int face = (rand() % 6) + 1;    //.......generated random integers amongst {1,2,3,4,5,6}
 
     return face;
 }
 
-int throw_two(int iter)
+int throw_two( )
 {
-    srand(time(NULL) + iter);            //.......observe the seed for rand()
     int face = ((rand() / 10) % 6) + 1;  //.......different than throw_one() despite same seed
 
     return face;
@@ -36,10 +34,12 @@ int main()
     printf("Enter the number of throws to be done : ");
     scanf("%d", &simu);
 
+    srand(time(NULL));       //.......observe the seed for rand()
+
     for(int k=0; k < simu; k++)
     {
-        dice_one = throw_one(k);
-        dice_two = throw_two(k);
+        dice_one = throw_one();
+        dice_two = throw_two();
 
         if((dice_one + dice_two) % 2 == 0)    //........checks for occurences of Event A
         {
